@@ -1,7 +1,7 @@
 import Image from "next/image";
 import logo from "@/assets/logo.png";
-import { Button } from "../base/Button";
 import Link from "next/link";
+import AuthModal from "../Auth/AuthModal";
 
 const Header = () => {
     return (
@@ -10,7 +10,7 @@ const Header = () => {
                 <Image src={logo} alt="logo image" width={108} height={39} />
             </Link>
             <div>
-                <Button size="small">로그인</Button>
+                <AuthModal></AuthModal>
             </div>
         </header>
     )
