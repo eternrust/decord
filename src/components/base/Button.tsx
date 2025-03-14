@@ -46,7 +46,7 @@ const ButtonColor: Record<string, colorType> = {
   },
   underline: {
     enabled:
-      'transition-all bg-white text-gray400 border-b-2 border-transparent hover:border-black hover:text-black',
+      'transition-all bg-white text-gray400 border-b-2 border-transparent hover:border-blue600 hover:text-blue600',
     disabled: 'bg-white text-gray300 border border-gray300',
   }
 }
