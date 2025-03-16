@@ -1453,7 +1453,6 @@ __metadata:
     react-dom: ^19.0.0
     react-hot-toast: ^2.5.2
     remixicon: ^4.6.0
-    styled-components: ^6.1.15
     tailwindcss: ^3.4.1
     typescript: ^5
   languageName: unknown
@@ -3170,8 +3169,8 @@ __metadata:
   linkType: hard
 
 "minipass-fetch@npm:^4.0.0":
-  version: 4.0.0
-  resolution: "minipass-fetch@npm:4.0.0"
+  version: 4.0.1
+  resolution: "minipass-fetch@npm:4.0.1"
   dependencies:
     encoding: ^0.1.13
     minipass: ^7.0.3
@@ -3180,7 +3179,7 @@ __metadata:
   dependenciesMeta:
     encoding:
       optional: true
-  checksum: 7d59a31011ab9e4d1af6562dd4c4440e425b2baf4c5edbdd2e22fb25a88629e1cdceca39953ff209da504a46021df520f18fd9a519f36efae4750ff724ddadea
+  checksum: 3dfca705ce887ca9ff14d73e8d8593996dea1a1ecd8101fdbb9c10549d1f9670bc8fb66ad0192769ead4c2dc01b4f9ca1cf567ded365adff17827a303b948140
   languageName: node
   linkType: hard
 
@@ -4531,7 +4530,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"styled-components@npm:^6.1.0, styled-components@npm:^6.1.15":
+"styled-components@npm:^6.1.0":
   version: 6.1.15
   resolution: "styled-components@npm:6.1.15"
   dependencies:

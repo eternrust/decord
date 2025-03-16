@@ -1,7 +1,7 @@
 import { cls } from "@/utils"
-import React, { InputHTMLAttributes } from "react"
+import React, { DetailedHTMLProps, InputHTMLAttributes } from "react"
 
-interface props extends InputHTMLAttributes<HTMLInputElement> {
+interface props extends DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> {
     label?: string
     fontSize?: keyof typeof SizeList
     description?: string

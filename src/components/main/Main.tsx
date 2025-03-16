@@ -3,6 +3,7 @@ import Image from "next/image";
 import banner_image from "@/assets/banner_LP.jpg"
 import { Button } from "../base/Button";
 import { useState } from "react";
+import BlogPreview from "../blog/BlogPreview";
 
 type POST_TYPE = 'recommend' | 'newest'
 
@@ -36,6 +37,13 @@ const Main = () => {
                 >
                     인기순
                 </Button>
+            </div>
+            <div className="max-w-[1200px] grid grid-cols-4 gap-8">
+                <BlogPreview />
+                <BlogPreview />
+                <BlogPreview />
+                <BlogPreview />
+                <BlogPreview />
             </div>
         </div>
     )
