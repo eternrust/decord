@@ -17,7 +17,7 @@ const AuthModal = ({ isOpen, onClose }: Props) => {
     const onCancel = useCallback(() => {
         setStatus('LOGIN')
         onClose()
-    }, [])
+    }, [onClose])
 
     return (
         <Modal isOpen={isOpen} onClose={onCancel}>

@@ -51,7 +51,7 @@ const Login = ({ onChangeModal, onClose }: Props) => {
                 toast.error("로그인에 실패하셨습니다...", { id: toastId })
             })
         return null
-    }, [data.id, data.pw])
+    }, [data, onClose, router])
 
     return (
         <div className="flex flex-col py-10 gap-5 w-[460px] items-center">

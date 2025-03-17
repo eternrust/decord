@@ -23,7 +23,7 @@ const SearchModal = ({ isOpen, onClose }: Props) => {
 
         router.push('/search?' + param.toString())
         onClose()
-    }, [])
+    }, [onClose, router])
 
     useEffect(() => {
         if (isOpen) document.body.style.overflow = "hidden";

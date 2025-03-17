@@ -3,7 +3,7 @@ import Image from "next/image";
 import logo from "@/assets/logo.png";
 import Link from "next/link";
 import AuthModal from "../Auth/AuthModal";
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import { Button } from "../base/Button";
 import { RiSearch2Line } from "@remixicon/react";
 import SearchModal from "../search/SearchModal";
@@ -25,8 +25,10 @@ const Header = () => {
                 />
                 <Button size="small" onClick={() => setAuthModalOpen(true)}>로그인</Button>
             </div>
-            <AuthModal isOpen={isAuthModalOpen} onClose={() => setAuthModalOpen(false)} />
-            <SearchModal isOpen={isSearchModalOpen} onClose={() => setSearchModalOpen(false)} />
+            <Suspense>
+                <AuthModal isOpen={isAuthModalOpen} onClose={() => setAuthModalOpen(false)} />
+                <SearchModal isOpen={isSearchModalOpen} onClose={() => setSearchModalOpen(false)} />
+            </Suspense>
         </header>
     )
 }
