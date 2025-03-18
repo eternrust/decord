@@ -5,7 +5,7 @@ import Link from "next/link";
 import AuthModal from "../Auth/AuthModal";
 import { Suspense, useState } from "react";
 import { Button } from "../base/Button";
-import { RiSearch2Line } from "@remixicon/react";
+import { RiSearch2Line, RiStickyNoteAddLine } from "@remixicon/react";
 import SearchModal from "../search/SearchModal";
 import { useUserContext } from "./ContextProvider";
 
@@ -27,14 +27,28 @@ const Header = () => {
                 />
                 {
                     user ?
-                        <Link href={`/user/${user.id}`}>
-                            {
-                                user.thumbnailURL ?
-                                    <Image src={user.thumbnailURL} alt="user 이미지" width={32} height={32} className="w-8 h-8 object-cover rounded-full cursor-pointer" />
-                                    :
-                                    <div className="w-8 h-8 rounded-full bg-gray600 cursor-pointer"></div>
-                            }
-                        </Link>
+                        <>
+                            <Link href='/write'>
+                                <RiStickyNoteAddLine
+                                    size={24}
+                                    className="hover:text-blue600 hover:scale-110 transition-all cursor-pointer"
+                                />
+                            </Link>
+                            <Link href={`/${user.id}/profile`}>
+                                {
+                                    user.thumbnailURL ?
+                                        <Image
+                                            src={user.thumbnailURL}
+                                            alt="user 이미지"
+                                            width={32}
+                                            height={32}
+                                            className="w-8 h-8 object-cover rounded-full cursor-pointer"
+                                        />
+                                        :
+                                        <div className="w-8 h-8 rounded-full bg-gray600 cursor-pointer"></div>
+                                }
+                            </Link>
+                        </>
                         :
                         <Button size="small" onClick={() => setAuthModalOpen(true)}>로그인</Button>
                 }

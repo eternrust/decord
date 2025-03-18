@@ -22,12 +22,12 @@ const BlogPreview = ({ data }: Props) => {
 
     return (
         <Link href={`${data.user.id}/${data.id}`}>
-            <div className="w-full min-w-[200px] max-w-[350px] flex flex-col rounded-xl bg-white hover:-translate-y-2 transition-all duration-500 shadow-md hover:shadow-xl hover:shadow-blue300">
+            <div className="w-full min-w-[200px] max-w-[400px] flex flex-col rounded-xl bg-white hover:-translate-y-2 transition-all duration-500 shadow-md hover:shadow-xl hover:shadow-blue300">
                 <div className="relative">
                     <Image
                         src={data.thumbnailURL || default_img}
                         alt="thumbnail"
-                        width={350}
+                        width={400}
                         height={200}
                         className="h-[150px] object-cover rounded-t-xl"
                         onError={error}

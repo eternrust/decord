@@ -44,7 +44,7 @@ const Main = (data: Props) => {
                     최신순
                 </Button>
             </div>
-            <div className="max-w-[1200px] grid grid-cols-4 gap-8">
+            <div className="max-w-[1200px] w-full grid grid-cols-4 max-xl:grid-cols-3 max-md:grid-cols-2 gap-8">
                 {
                     data[postType].map((data, index) => <BlogPreview key={index} data={data} />)
                 }

@@ -3,15 +3,15 @@ import { getUserMe } from "@/api/user/getUserMe";
 import { PropsWithChildren } from "react";
 import ContextProvider from "./ContextProvider";
 import Header from "./Header";
-import { deleteCookie, getCookie } from "cookies-next";
+import { deleteCookie } from "cookies-next";
+import { cookies } from "next/headers";
 
 const MainLayout = async ({ children }: PropsWithChildren) => {
-  const token = await getCookie('access_token')
+  const token = (await cookies()).get('access_token')
   let user: UserType | null = null
 
   if (token) {
-    console.log(token)
-    user = await getUserMe(token).then((res) => {
+    user = await getUserMe(token.value).then((res) => {
       return res.data
     }).catch(() => {
       deleteCookie('access_token')
