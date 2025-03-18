@@ -1,7 +1,7 @@
 import Search from "@/components/search/Search";
 import { Suspense } from "react";
 
-export default function Home() {
+export default function Page() {
     return (
         <Suspense>
             <Search />

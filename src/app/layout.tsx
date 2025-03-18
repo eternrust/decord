@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import localFont from 'next/font/local'
 import { Toaster } from "react-hot-toast";
+import MainLayout from "@/components/layout/MainLayout";
 import "./globals.css";
-import Header from "@/components/layout/Header";
 
 const Pretendard = localFont({
   src: './PretendardVariable.woff2',
@@ -19,14 +19,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="ko">
       <body
         className={Pretendard.className}
       >
-        <Header />
-        <main className="min-h-screen min-w-[550px] pt-[60px]">
+        <MainLayout>
           {children}
-        </main>
+        </MainLayout>
         <Toaster
           position="top-center"
           reverseOrder={true}

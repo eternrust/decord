@@ -4,10 +4,16 @@ import banner_image from "@/assets/banner_LP.jpg"
 import { Button } from "../base/Button";
 import { useState } from "react";
 import BlogPreview from "../blog/BlogPreview";
+import { PageContentType } from "@/api/page/postPage";
 
 type POST_TYPE = 'recommend' | 'newest'
 
-const Main = () => {
+interface Props {
+    recommend: PageContentType[]
+    newest: PageContentType[]
+}
+
+const Main = (data: Props) => {
     const [postType, setPostType] = useState<POST_TYPE>('recommend')
 
     return (
@@ -35,15 +41,13 @@ const Main = () => {
                     onClick={() => setPostType('newest')}
                     className={postType === 'newest' ? '!border-blue500 !text-blue500' : undefined}
                 >
-                    인기순
+                    최신순
                 </Button>
             </div>
             <div className="max-w-[1200px] grid grid-cols-4 gap-8">
-                <BlogPreview />
-                <BlogPreview />
-                <BlogPreview />
-                <BlogPreview />
-                <BlogPreview />
+                {
+                    data[postType].map((data, index) => <BlogPreview key={index} data={data} />)
+                }
             </div>
         </div>
     )

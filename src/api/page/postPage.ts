@@ -1,4 +1,5 @@
 import { instance } from "../axios"
+import { UserType } from "../user/getUser"
 
 export type PAGE_SCOPE_TYPE = "PRIVATE" | "PROTECTED" | "PUBLIC"
 
@@ -10,16 +11,13 @@ export interface PostPageRequest {
 }
 
 export interface PageContentType {
-    user: {
-        id: string
-        name: string
-        thumbnailURL: string
-    }
+    id: string
+    user: UserType
     title: string
     content: string
     scope: PAGE_SCOPE_TYPE
     tags: string[]
-    thumbnailURL: string
+    thumbnailURL?: string
 }
 
 export const postPage = async (token: string, data: PostPageRequest, file?: File) => {
