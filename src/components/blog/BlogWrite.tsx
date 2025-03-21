@@ -12,9 +12,10 @@ import Editor from "../base/Editor"
 import Link from "next/link"
 import { Dropdown } from "../base/Dropdown"
 import { PAGE_SCOPE_TYPE, postPage } from "@/api/page/postPage"
-import { fileSizeToString } from "@/utils"
+import { convertURLtoFile, fileSizeToString } from "@/utils"
 import { useRouter } from "next/navigation"
 import toast from "react-hot-toast"
+import { getPageDetail } from "@/api/page/getPageDetail"
 
 interface Props {
     pageId?: string
@@ -90,9 +91,44 @@ const Write = ({ pageId }: Props) => {
         e.returnValue = "";
     }, [])
 
+    const getData = useCallback(async () => {
+        const token = await getCookie('access_token')
+        const toastId = toast.loading('데이터를 불러오는 중입니다...')
+
+        if (!token || !pageId) {
+            router.refresh()
+            return
+        }
+
+        await getPageDetail(token, pageId).then(async res => {
+            if (res.data.user.id !== user?.id) {
+                toast.error('권한이 없습니다', { id: toastId })
+                router.back()
+                return
+            }
+            setContentTitle(res.data.title)
+            setContent(res.data.content)
+            setType(res.data.scope)
+            setTagList(res.data.tags)
+            if (res.data.thumbnailURL) {
+                setIsChangeImage(false)
+                const thumbnail = await convertURLtoFile(`${process.env.NEXT_PUBLIC_BASE_URL}/${res.data.thumbnailURL}`)
+                if (thumbnail) setImageFile(thumbnail)
+                else toast.error(`'${res.data.thumbnailURL}' 파일을 찾을 수 없습니다.`)
+                setPreviewImage(`${process.env.NEXT_PUBLIC_BASE_URL}/${res.data.thumbnailURL}`)
+            }
+            toast.success('데이터를 불러오는데 성공했습니다', { id: toastId })
+        }).catch(() => {
+            toast.error('정보를 불러오다가 에러가 발생했습니다.')
+            router.refresh()
+        })
+    }, [user, pageId, router])
+
     useEffect(() => {
-        // 대충 수정할때 값 불러와서 자신꺼인지 확인하는 곳
-    }, [user])
+        if (pageId) {
+            getData()
+        }
+    }, [pageId])
 
     useEffect(() => {
         (() => {
