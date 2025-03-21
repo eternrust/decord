@@ -18,8 +18,8 @@ const Main = (data: Props) => {
 
     return (
         <div className="flex flex-col gap-10 py-10 px-8 items-center">
-            <div className="relative max-w-[1200px]">
-                <Image src={banner_image} alt="banner image" width={1200} height={300} className="w-[1200px] h-[300px] object-cover rounded-2xl object-right-bottom" />
+            <div className="relative max-w-[1200px] w-full">
+                <Image src={banner_image} alt="banner image" height={300} priority className="w-full h-[300px] object-cover rounded-2xl object-right-bottom" />
                 <div className="absolute top-0 left-0 flex flex-col justify-center w-full h-full p-10">
                     <span className="text-displaySmall text-white">나만의 작은 일기장</span>
                     <p className="text-displaySmall text-white">

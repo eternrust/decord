@@ -20,7 +20,7 @@ export interface PageContentType {
     thumbnailURL?: string
 }
 
-export const postPage = async (token: string, data: PostPageRequest, file?: File) => {
+export const postPage = async (token: string, data: PostPageRequest, file?: File | null) => {
     const formData = new FormData()
 
     const blob = new Blob([JSON.stringify(data)], {

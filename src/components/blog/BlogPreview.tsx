@@ -27,8 +27,7 @@ const BlogPreview = ({ data }: Props) => {
                     <Image
                         src={data.thumbnailURL || default_img}
                         alt="thumbnail"
-                        width={400}
-                        height={200}
+                        height={150}
                         className="h-[150px] object-cover rounded-t-xl"
                         onError={error}
                         unoptimized={true}
