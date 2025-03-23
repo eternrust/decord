@@ -31,7 +31,8 @@ export const postPage = async (token: string, data: PostPageRequest, file?: File
 
     return await instance.post<PageContentType>('/page', data, {
         headers: {
-            Authorization: `Bearer ${token}`
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "multipart/form-data"
         }
     })
 }

@@ -62,8 +62,9 @@ const Write = ({ pageId }: Props) => {
             toast.success('업로드 되었습니다!', { id: toastId })
             router.refresh()
             router.push('/')
-        }).catch(() => {
+        }).catch((err) => {
             toast.error('에러가 발생했습니다.', { id: toastId })
+            console.log(err)
             router.refresh()
         })
     }, [contentTitle, content, tagList, type, imageFile])
@@ -92,15 +93,14 @@ const Write = ({ pageId }: Props) => {
     }, [])
 
     const getData = useCallback(async () => {
-        const token = await getCookie('access_token')
         const toastId = toast.loading('데이터를 불러오는 중입니다...')
 
-        if (!token || !pageId) {
+        if (!pageId) {
             router.refresh()
             return
         }
 
-        await getPageDetail(token, pageId).then(async res => {
+        await getPageDetail(pageId).then(async res => {
             if (res.data.user.id !== user?.id) {
                 toast.error('권한이 없습니다', { id: toastId })
                 router.back()
