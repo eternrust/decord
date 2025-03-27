@@ -1,7 +1,7 @@
 import { instance } from "../axios"
-import { GetPageRequest, GetPageResponse } from "./getPageSearch"
+import { PageSearchOptions, GetPageResponse } from "./getPageSearch"
 
-export interface GetPageUserRequest extends GetPageRequest {
+export interface GetPageUserRequest extends PageSearchOptions {
     userId: string
 }
 

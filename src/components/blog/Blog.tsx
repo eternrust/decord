@@ -2,9 +2,6 @@
 
 import { PageContentType } from "@/api/page/postPage";
 import { UserType } from "@/api/user/getUser";
-import { Button } from "../base/Button";
-import { RiArrowLeftSLine } from "@remixicon/react";
-import { useRouter } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -14,7 +11,6 @@ interface Props {
 }
 
 const Blog = ({ user, page }: Props) => {
-    const router = useRouter()
     return (
         <div className="pt-10 pb-40 px-8">
             <div className="max-w-[1200px] w-full mx-auto flex flex-col gap-10">
@@ -36,6 +32,7 @@ const Blog = ({ user, page }: Props) => {
                         <span className="text-labelSmall_medium">{user.name}</span>
                     </Link>
                 </div>
+                <div dangerouslySetInnerHTML={{ __html: page.content }}></div>
             </div>
         </div>
     )

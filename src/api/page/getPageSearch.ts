@@ -7,7 +7,7 @@ export type PAGE_SORT_TYPE = "CREATED_AT_ASC" | "CREATED_AT_DESC" | "UPDATED_AT_
 tagIds, tagNames중 하나만 입력하면 됩니다.
 우선 순위: tagIds > tagNames
 */
-export interface GetPageRequest {
+export interface PageSearchOptions {
     page?: number           // default - 1
     size?: number           // default - 10
     content?: string        // 검색어
@@ -45,7 +45,7 @@ export interface GetPageResponse {
     empty: boolean
 }
 
-export const getPageSearch = async (data: GetPageRequest) => {
+export const getPageSearch = async (data: PageSearchOptions) => {
     return await instance.get<GetPageResponse>('/page/search', {
         params: data
     })
